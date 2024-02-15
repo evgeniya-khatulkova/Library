@@ -102,4 +102,12 @@ function displayErrorMessage(){
   error_message.style.display = "block";
 }
 
+const cashing = [new Book("HarryPotter", "J.K Rowling", 600,true),
+new Book("Gone with the Wind", "Margaret Mitchel", 700),
+new Book("Misery", "Stephen King", 343),
+new Book("Umberto Eco", "The Name of the Rose", 800),
+new Book("Master and Margarita", "Michail Bulgakov",666)];
+
+let bookInput = [...newBookDialog.querySelectorAll('dialog input')];
+
 render();
