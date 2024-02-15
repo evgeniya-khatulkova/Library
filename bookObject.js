@@ -81,3 +81,25 @@ submitDialog.addEventListener('click', () => {
   newBook.add();
   closeDialog.click();
 });
+
+function render() { // render after the update
+  output_window.innerHTML = "";
+  cashing.forEach(book => book.template());
+  summaryUpdate();
+};
+
+function summaryUpdate(){ // info summary of the library's content
+  const result = cashing.filter((book) => !book.read);
+  summarized.innerText = `Library insludes: ${cashing.length} books.\nBooks unread: ${result.length}.`;
+}
+
+function cleanInput() { // dialog input clean and error
+  error_message.style.display = "none";
+  [...newBookDialog.querySelectorAll('input')].map(input => input.value = "");
+}
+
+function displayErrorMessage(){
+  error_message.style.display = "block";
+}
+
+render();
