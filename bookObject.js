@@ -64,3 +64,20 @@ Book{
   }
 }
 
+// dialog events listeners open/close/submit
+addButton.addEventListener('click', () => newBookDialog.showModal());
+
+closeDialog.addEventListener('click',() => {
+   cleanInput();
+   newBookDialog.close();
+});
+
+submitDialog.addEventListener('click', () => {
+  if(bookInput.some(input => input.value === '')){
+    displayErrorMessage();
+    return;
+  }
+  let newBook = new Book(bookInput[0].value, bookInput[1].value, bookInput[2].value, bookInput[3].checked);
+  newBook.add();
+  closeDialog.click();
+});
