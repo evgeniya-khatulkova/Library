@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output_window"></div>
+    <div id="sticky-div">
+        <button id="addButton"></button>
+        <div id="summarized"></div>
+    </div>
+
+    <dialog id="newBookDialog">
+        <form>
+            <div id="error_message">Fill in title author's name and amount of pages</div>
+            <label>Book Title</label>
+            <input type="text" id="bookTitleAddBook"></input>
+            <label>Author</label>
+            <input type="text" id="bookAuthorAddBook"></input>
+            <label>Amount of Pages</label>
+            <input type="number" min ="1" id="bookPagesAddBook"></input>
+            <div class="readInput">
+                <label>Finished</label>
+                <input type="checkbox"></input>
+            </div>
+            <div id="group-buttons-dialog">
+                <button id="submitDialog" type="button">Add</button>
+                <button id="closeDialog" type="button">Close</button>
+            </div>
+        </form>
+    </dialog>
+    <script type="text/javascript" src="./bookObject.js"></script>
+    <link rel="stylesheet" href="style.css">
+</body>
+</html>
