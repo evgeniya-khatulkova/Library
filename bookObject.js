@@ -71,22 +71,25 @@ class Book{
 }
 
 // dialog events listeners open/close/submit
-addButton.addEventListener('click', () => newBookDialog.showModal());
+  addButton.addEventListener('click', () => newBookDialog.showModal());
 
-closeDialog.addEventListener('click',() => {
-   cleanInput();
-   newBookDialog.close();
-});
+  closeDialog.addEventListener('click',() => {
+    cleanInput();
+    newBookDialog.close();
+  });
 
-submitDialog.addEventListener('click', () => {
-  if(bookInput.some(input => input.value === '')){
-    displayErrorMessage();
-    return;
-  }
-  let newBook = new Book(bookInput[0].value, bookInput[1].value, bookInput[2].value, bookInput[3].checked);
-  newBook.add();
-  closeDialog.click();
-});
+  submitDialog.addEventListener('click', () => {
+    let bookInput = [...newBookDialog.querySelectorAll('dialog input')];
+    let bookInputValidation = bookInput.slice(0,-1);
+    if(bookInputValidation.some(input => input.value === '')){
+      displayErrorMessage();
+      console.log('here')
+      return;
+    }
+    let newBook = new Book(bookInput[0].value, bookInput[1].value, bookInput[2].value, bookInput[3].checked);
+    newBook.add();
+    closeDialog.click();
+  });
 
 function render() { // render after the update
   output_window.innerHTML = "";
@@ -107,7 +110,5 @@ function cleanInput() { // dialog input clean and error
 function displayErrorMessage(){
   error_message.style.display = "block";
 }
-
-let bookInput = [...newBookDialog.querySelectorAll('dialog input')];
 
 render();
