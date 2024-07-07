@@ -1,6 +1,12 @@
 // id counter and cash array
-class
-Book{
+class Book{
+  static cache =
+  [new Book("HarryPotter", "J.K Rowling", 600,true),
+  new Book("Gone with the Wind", "Margaret Mitchel", 700),
+  new Book("Misery", "Stephen King", 343),
+  new Book("Umberto Eco", "The Name of the Rose", 800),
+  new Book("Master and Margarita", "Michail Bulgakov",666)];
+
   constructor(title, author, pages, read = false) {
     this.title = title;
     this.author = author;
@@ -9,7 +15,7 @@ Book{
   }
 
   add(){ // adds new book to cashing
-    cashing.push(this);
+    Book.cache.push(this);
     render();
   };
 
@@ -54,8 +60,8 @@ Book{
   }
 
   delete(){ // remove instance from the cashing arr
-    const index = cashing.indexOf(this);
-    cashing.splice(index, 1);
+    const index = Book.cache.indexOf(this);
+    Book.cache.splice(index, 1);
     render();
   }
 
@@ -84,13 +90,13 @@ submitDialog.addEventListener('click', () => {
 
 function render() { // render after the update
   output_window.innerHTML = "";
-  cashing.forEach(book => book.template());
+  Book.cache.forEach(book => book.template());
   summaryUpdate();
 };
 
 function summaryUpdate(){ // info summary of the library's content
-  const result = cashing.filter((book) => !book.read);
-  summarized.innerText = `Library insludes: ${cashing.length} books.\nBooks unread: ${result.length}.`;
+  const result = Book.cache.filter((book) => !book.read);
+  summarized.innerText = `Library insludes: ${Book.cache.length} books.\nBooks unread: ${result.length}.`;
 }
 
 function cleanInput() { // dialog input clean and error
@@ -101,12 +107,6 @@ function cleanInput() { // dialog input clean and error
 function displayErrorMessage(){
   error_message.style.display = "block";
 }
-
-const cashing = [new Book("HarryPotter", "J.K Rowling", 600,true),
-new Book("Gone with the Wind", "Margaret Mitchel", 700),
-new Book("Misery", "Stephen King", 343),
-new Book("Umberto Eco", "The Name of the Rose", 800),
-new Book("Master and Margarita", "Michail Bulgakov",666)];
 
 let bookInput = [...newBookDialog.querySelectorAll('dialog input')];
 
